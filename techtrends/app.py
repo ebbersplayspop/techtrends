@@ -45,6 +45,10 @@ def healthcheck():
 # Define the metrics endpoint of the web application
 @app.route('/metrics')
 def metrics():
+    connection = get_db_connection()
+    posts = connection.execute('SELECT COUNT(*) FROM posts')
+    changes = connection.total_changes
+    connection.close()
     response = app.response_class(
             response=json.dumps({"status":"success","code":0,"data":{"db_connection_count": connection,"post_count": posts}}),
             status=200,
