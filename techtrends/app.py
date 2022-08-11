@@ -50,7 +50,7 @@ def metrics():
     changes = connection.total_changes
     connection.close()
     response = app.response_class(
-            response=json.dumps({"status":"success","code":0,"data":{"db_connection_count": changes,"post_count": posts}}),
+            response=json.dumps({"db_connection_count": changes,"post_count": posts}),
             status=200,
             mimetype='application/json'
     )
