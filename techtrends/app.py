@@ -80,17 +80,17 @@ def metrics():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
-      app.logger.warning('Page not found')
+      app.logger.warning('Page not found.')
       return render_template('404.html'), 404
     else:
-      app.logger.warning('Page found')
+      app.logger.info('Page retrieved.', post)
       return render_template('post.html', post=post)
 
 # Define the About Us page
 @app.route('/about')
 def about():
-    return render_template('about.html')
     app.logger.info('About Us page has been retrieved.')
+    return render_template('about.html')
 
 # Define the post creation functionality 
 @app.route('/create', methods=('GET', 'POST'))
