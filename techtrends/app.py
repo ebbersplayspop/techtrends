@@ -83,7 +83,7 @@ def post(post_id):
       app.logger.warning('Page not found.')
       return render_template('404.html'), 404
     else:
-      app.logger.info('Page retrieved.', post)
+      app.logger.info('Page retrieved.', post_title)
       return render_template('post.html', post=post)
 
 # Define the About Us page
