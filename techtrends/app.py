@@ -39,7 +39,7 @@ def healthcheck():
             status=200,
             mimetype='application/json'
     )
-    logging.info('Healthz status request successfull.')
+    app.logger.info('Healthz status request successfull.')
     return response
 
 # Define the metrics endpoint of the web application
@@ -68,7 +68,7 @@ def metrics():
             jdata = {'db_connection_count': conn.total_changes, 'post_count': posts}
             response = app.response_class(
                 response=json.dumps(jdata), status=200, mimetype='application/json')
-            logging.info('Metrics request successfull.')
+            app.logger.info('Metrics request successfull.')
             return response
         finally:
             if cursor:
@@ -81,15 +81,16 @@ def post(post_id):
     post = get_post(post_id)
     if post is None:
       return render_template('404.html'), 404
-      logging.warning('Page not found')
+      app.logger.warning('Page not found')
     else:
       return render_template('post.html', post=post)
+      app.logger.warning('Page not found')
 
 # Define the About Us page
 @app.route('/about')
 def about():
     return render_template('about.html')
-    logging.info('About Us page has been retrieved.')
+    app.logger.info('About Us page has been retrieved.')
 
 # Define the post creation functionality 
 @app.route('/create', methods=('GET', 'POST'))
