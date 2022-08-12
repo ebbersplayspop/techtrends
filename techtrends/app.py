@@ -16,7 +16,6 @@ def get_post(post_id):
     connection = get_db_connection()
     post = connection.execute('SELECT * FROM posts WHERE id = ?',
                         (post_id,)).fetchone()
-    app.logger.info('Article %s retrieved!', post_title) 
     connection.close()
     return post
 
@@ -40,7 +39,7 @@ def healthcheck():
             status=200,
             mimetype='application/json'
     )
-    app.logger.info('Healthz status request successfull.')
+    logging.info('Healthz status request successfull.')
     return response
 
 # Define the metrics endpoint of the web application
@@ -69,7 +68,7 @@ def metrics():
             jdata = {'db_connection_count': conn.total_changes, 'post_count': posts}
             response = app.response_class(
                 response=json.dumps(jdata), status=200, mimetype='application/json')
-            app.logger.info('Metrics request successfull.')
+            logging.info('Metrics request successfull.')
             return response
         finally:
             if cursor:
@@ -82,7 +81,7 @@ def post(post_id):
     post = get_post(post_id)
     if post is None:
       return render_template('404.html'), 404
-      app.logger.warning('Page not found')
+      logging.warning('Page not found')
     else:
       return render_template('post.html', post=post)
 
@@ -90,7 +89,7 @@ def post(post_id):
 @app.route('/about')
 def about():
     return render_template('about.html')
-    app.logger.info('About Us page has been retrieved.')
+    logging.info('About Us page has been retrieved.')
 
 # Define the post creation functionality 
 @app.route('/create', methods=('GET', 'POST'))
