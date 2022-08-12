@@ -16,6 +16,7 @@ def get_post(post_id):
     connection = get_db_connection()
     post = connection.execute('SELECT * FROM posts WHERE id = ?',
                         (post_id,)).fetchone()
+    app.logger.info('Page %s retrieved.', post)
     connection.close()
     return post
 
@@ -83,7 +84,6 @@ def post(post_id):
       app.logger.warning('Page not found.')
       return render_template('404.html'), 404
     else:
-      app.logger.info('Page retrieved.', post_title)
       return render_template('post.html', post=post)
 
 # Define the About Us page
