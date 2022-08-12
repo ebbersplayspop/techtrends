@@ -16,8 +16,7 @@ def get_post(post_id):
     connection = get_db_connection()
     post = connection.execute('SELECT * FROM posts WHERE id = ?',
                         (post_id,)).fetchone()
-    title = connection.execute('SELECT title FROM posts WHERE id = ?',
-                        (post_id,)).fetchone()
+    title = connection.execute('SELECT title FROM posts WHERE id = ?')
     app.logger.info('Page %s retrieved.', title)
     connection.close()
     return post
