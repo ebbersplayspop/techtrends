@@ -16,6 +16,7 @@ def get_post(post_id):
     connection = get_db_connection()
     post = connection.execute('SELECT * FROM posts WHERE id = ?',
                         (post_id,)).fetchone()
+    app.logger.info('Article %s retrieved!', post_title) 
     connection.close()
     return post
 
@@ -84,7 +85,6 @@ def post(post_id):
       app.logger.warning('Page not found')
     else:
       return render_template('post.html', post=post)
-      app.logger.info('Article %s retrieved!', title)
 
 # Define the About Us page
 @app.route('/about')
@@ -106,10 +106,10 @@ def create():
             connection.execute('INSERT INTO posts (title, content) VALUES (?, ?)',
                          (title, content))
             connection.commit()
+            app.logger.info('Article %s created!', title)
             connection.close()
 
             return redirect(url_for('index'))
-            app.logger.info('Article %s created!', title)
 
     return render_template('create.html')
 
