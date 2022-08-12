@@ -43,20 +43,36 @@ def healthcheck():
     return response
 
 # Define the metrics endpoint of the web application
+#@app.route('/metrics')
+#def metrics():
+#    connection = get_db_connection()
+#    posts = connection.execute('SELECT COUNT(*) FROM posts')
+#    changes = connection.total_changes
+#    connection.close()
+#    response = app.response_class(
+#            response=json.dumps({"db_connection_count": changes}, {"post_count": posts}, default=default_json),
+#	    response=json.dumps({"status":"success","code":0,"data":{"UserCount":posts,"UserCountActive":20}),
+#            status=200,
+#            mimetype='application/json'
+#    )
+#    app.logger.info('Metrics request successfull.')
+#    return response
+
 @app.route('/metrics')
 def metrics():
-    connection = get_db_connection()
-    posts = connection.execute('SELECT COUNT(*) FROM posts')
-    changes = connection.total_changes
-    connection.close()
-    response = app.response_class(
-#            response=json.dumps({"db_connection_count": changes}, {"post_count": posts}, default=default_json),
-	    response=json.dumps({"status":"success","code":0,"data":{"UserCount":posts,"UserCountActive":20}),
-            status=200,
-            mimetype='application/json'
-    )
-    app.logger.info('Metrics request successfull.')
-    return response
+    with sqlite3.connect('database.db') as conn:
+        cursor = None
+        try:
+            cursor = conn.execute('SELECT COUNT(*) FROM posts')
+            posts = cursor.fetchone()[0]
+            jdata = {'db_connection_count': conn.total_changes, 'post_count': posts}
+            response = app.response_class(
+                response=json.dumps(jdata), status=200, mimetype='application/json')
+            app.logger.info('Metrics request successfull.')
+            return response
+        finally:
+            if cursor:
+                cursor.close()
 
 # Define how each individual article is rendered 
 # If the post ID is not found a 404 page is shown
