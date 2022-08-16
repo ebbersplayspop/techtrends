@@ -1,0 +1,9 @@
+apiVersion: v1
+name: techtrends 
+description: Install the Techtrends deployment manifests
+keywords:
+- techtrends 
+version: 1.0.0
+maintainers:
+- name: ebbersplayspop 
+  email: ebbersplayspop@xyz.com
