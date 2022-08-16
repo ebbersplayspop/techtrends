@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: techtrends 
-          image: techtrends:latest 
+          image: szq2q6/techtrends:latest 
           livenessProbe:
             httpGet:
               path: /healthz
