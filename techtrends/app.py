@@ -1,14 +1,29 @@
 import sqlite3
 import logging
+import sys
 
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
+
+
+# Global variable
+connection_tally = int()
+
+# Logging
+def setup_logger():
+    stdout_handler = logging.StreamHandler(stream=sys.stdout) 
+    stderr_handler = logging.StreamHandler(stream=sys.stderr) 
+    handlers = [stdout_handler, stderr_handler ]
+#    format_output = '%(asctime)s %(message)s', datefmt='%d/%m/%Y %I:%M:%S %p' 
+    logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%d/%m/%Y %I:%M:%S %p', level=logging.DEBUG, handlers =handlers)
 
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
 def get_db_connection():
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
+    global connection_tally
+    connection_tally += 1
     return connection
 
 # Function to get a post using its ID
@@ -61,12 +76,13 @@ def healthcheck():
 
 @app.route('/metrics')
 def metrics():
-    with sqlite3.connect('database.db') as conn:
+    with get_db_connection() as conn:
+        global connection_tally
         cursor = None
         try:
             cursor = conn.execute('SELECT COUNT(*) FROM posts')
             posts = cursor.fetchone()[0]
-            jdata = {'db_connection_count': conn.total_changes, 'post_count': posts}
+            jdata = {'db_connection_count': connection_tally, 'post_count': posts}
             response = app.response_class(
                 response=json.dumps(jdata), status=200, mimetype='application/json')
             app.logger.info('Metrics request successfull.')
@@ -115,7 +131,8 @@ def create():
 
 # start the application on port 3111
 if __name__ == "__main__":
-  # Define the logging policy
-  logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%d/%m/%Y %I:%M:%S %p', level=logging.DEBUG)
+  setup_logger()
+# Define the logging policy
+#  logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%d/%m/%Y %I:%M:%S %p', level=logging.DEBUG)
   
   app.run(host='0.0.0.0', port='3111')

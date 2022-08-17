@@ -12,31 +12,56 @@ docker logs --details techtrends
 
 ## Logs from the container running the TechTrends application
 # TODO: paste logs from the Docker container 
-  * Serving Flask app 'app' (lazy loading)
-  * Environment: production
-    WARNING: This is a development server. Do not use it in a production deployment.
-    Use a production WSGI server instead.
-  * Debug mode: off
- 12/08/2022 01:41:52 PM  * Running on all addresses.
-    WARNING: This is a development server. Do not use it in a production deployment.
- 12/08/2022 01:41:52 PM  * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
- 12/08/2022 01:42:03 PM 172.17.0.1 - - [12/Aug/2022 13:42:03] "GET / HTTP/1.1" 200 -
- 12/08/2022 01:42:03 PM 172.17.0.1 - - [12/Aug/2022 13:42:03] "GET /static/css/main.css HTTP/1.1" 304 -
- 12/08/2022 01:42:09 PM About Us page has been retrieved.
- 12/08/2022 01:42:09 PM 172.17.0.1 - - [12/Aug/2022 13:42:09] "GET /about HTTP/1.1" 200 -
- 12/08/2022 01:42:09 PM 172.17.0.1 - - [12/Aug/2022 13:42:09] "GET /static/css/main.css HTTP/1.1" 304 -
- 12/08/2022 01:42:11 PM 172.17.0.1 - - [12/Aug/2022 13:42:11] "GET /create HTTP/1.1" 200 -
- 12/08/2022 01:42:11 PM 172.17.0.1 - - [12/Aug/2022 13:42:11] "GET /static/css/main.css HTTP/1.1" 304 -
- 12/08/2022 01:42:17 PM Article Test created!
- 12/08/2022 01:42:17 PM 172.17.0.1 - - [12/Aug/2022 13:42:17] "POST /create HTTP/1.1" 302 -
- 12/08/2022 01:42:17 PM 172.17.0.1 - - [12/Aug/2022 13:42:17] "GET / HTTP/1.1" 200 -
- 12/08/2022 01:42:17 PM 172.17.0.1 - - [12/Aug/2022 13:42:17] "GET /static/css/main.css HTTP/1.1" 304 -
- 12/08/2022 01:42:26 PM Page retrieved.
- 12/08/2022 01:42:26 PM 172.17.0.1 - - [12/Aug/2022 13:42:26] "GET /1 HTTP/1.1" 200 -
- 12/08/2022 01:42:26 PM 172.17.0.1 - - [12/Aug/2022 13:42:26] "GET /static/css/main.css HTTP/1.1" 304 -
- 12/08/2022 01:42:38 PM Page retrieved.
- 12/08/2022 01:42:38 PM Page not found.
- 12/08/2022 01:42:38 PM 172.17.0.1 - - [12/Aug/2022 13:42:38] "GET /9 HTTP/1.1" 404 -
- 12/08/2022 01:42:38 PM 172.17.0.1 - - [12/Aug/2022 13:42:38] "GET /static/css/main.css HTTP/1.1" 304 -
- 12/08/2022 01:42:39 PM 172.17.0.1 - - [12/Aug/2022 13:42:39] "GET /static/css/main.css HTTP/1.1" 304 -
-
+ * Serving Flask app 'app' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+17/08/2022 07:38:42 PM  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+17/08/2022 07:38:42 PM  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+17/08/2022 07:38:42 PM  * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
+17/08/2022 07:38:42 PM  * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
+17/08/2022 07:39:19 PM 172.17.0.1 - - [17/Aug/2022 19:39:19] "GET / HTTP/1.1" 200 -
+17/08/2022 07:39:19 PM 172.17.0.1 - - [17/Aug/2022 19:39:19] "GET / HTTP/1.1" 200 -
+17/08/2022 07:39:19 PM 172.17.0.1 - - [17/Aug/2022 19:39:19] "GET /static/css/main.css HTTP/1.1" 304 -
+17/08/2022 07:39:19 PM 172.17.0.1 - - [17/Aug/2022 19:39:19] "GET /static/css/main.css HTTP/1.1" 304 -
+17/08/2022 07:39:26 PM Page retrieved.
+17/08/2022 07:39:26 PM Page retrieved.
+17/08/2022 07:39:26 PM 172.17.0.1 - - [17/Aug/2022 19:39:26] "GET /1 HTTP/1.1" 200 -
+17/08/2022 07:39:26 PM 172.17.0.1 - - [17/Aug/2022 19:39:26] "GET /1 HTTP/1.1" 200 -
+17/08/2022 07:39:26 PM 172.17.0.1 - - [17/Aug/2022 19:39:26] "GET /static/css/main.css HTTP/1.1" 304 -
+17/08/2022 07:39:26 PM 172.17.0.1 - - [17/Aug/2022 19:39:26] "GET /static/css/main.css HTTP/1.1" 304 -
+17/08/2022 07:39:33 PM About Us page has been retrieved.
+17/08/2022 07:39:33 PM About Us page has been retrieved.
+17/08/2022 07:39:33 PM 172.17.0.1 - - [17/Aug/2022 19:39:33] "GET /about HTTP/1.1" 200 -
+17/08/2022 07:39:33 PM 172.17.0.1 - - [17/Aug/2022 19:39:33] "GET /about HTTP/1.1" 200 -
+17/08/2022 07:39:33 PM 172.17.0.1 - - [17/Aug/2022 19:39:33] "GET /static/css/main.css HTTP/1.1" 304 -
+17/08/2022 07:39:33 PM 172.17.0.1 - - [17/Aug/2022 19:39:33] "GET /static/css/main.css HTTP/1.1" 304 -
+17/08/2022 07:39:46 PM Page retrieved.
+17/08/2022 07:39:46 PM Page retrieved.
+17/08/2022 07:39:46 PM Page not found.
+17/08/2022 07:39:46 PM Page not found.
+17/08/2022 07:39:46 PM 172.17.0.1 - - [17/Aug/2022 19:39:46] "GET /10 HTTP/1.1" 404 -
+17/08/2022 07:39:46 PM 172.17.0.1 - - [17/Aug/2022 19:39:46] "GET /10 HTTP/1.1" 404 -
+17/08/2022 07:39:46 PM 172.17.0.1 - - [17/Aug/2022 19:39:46] "GET /static/css/main.css HTTP/1.1" 304 -
+17/08/2022 07:39:46 PM 172.17.0.1 - - [17/Aug/2022 19:39:46] "GET /static/css/main.css HTTP/1.1" 304 -
+17/08/2022 07:41:06 PM 172.17.0.1 - - [17/Aug/2022 19:41:06] "GET /create HTTP/1.1" 200 -
+17/08/2022 07:41:06 PM 172.17.0.1 - - [17/Aug/2022 19:41:06] "GET /create HTTP/1.1" 200 -
+17/08/2022 07:41:06 PM 172.17.0.1 - - [17/Aug/2022 19:41:06] "GET /static/css/main.css HTTP/1.1" 304 -
+17/08/2022 07:41:06 PM 172.17.0.1 - - [17/Aug/2022 19:41:06] "GET /static/css/main.css HTTP/1.1" 304 -
+17/08/2022 07:41:12 PM Article Test created!
+17/08/2022 07:41:12 PM Article Test created!
+17/08/2022 07:41:12 PM 172.17.0.1 - - [17/Aug/2022 19:41:12] "POST /create HTTP/1.1" 302 -
+17/08/2022 07:41:12 PM 172.17.0.1 - - [17/Aug/2022 19:41:12] "POST /create HTTP/1.1" 302 -
+17/08/2022 07:41:12 PM 172.17.0.1 - - [17/Aug/2022 19:41:12] "GET / HTTP/1.1" 200 -
+17/08/2022 07:41:12 PM 172.17.0.1 - - [17/Aug/2022 19:41:12] "GET / HTTP/1.1" 200 -
+17/08/2022 07:41:12 PM 172.17.0.1 - - [17/Aug/2022 19:41:12] "GET /static/css/main.css HTTP/1.1" 304 -
+17/08/2022 07:41:12 PM 172.17.0.1 - - [17/Aug/2022 19:41:12] "GET /static/css/main.css HTTP/1.1" 304 -
+17/08/2022 07:43:08 PM About Us page has been retrieved.
+17/08/2022 07:43:08 PM About Us page has been retrieved.
+17/08/2022 07:43:08 PM 172.17.0.1 - - [17/Aug/2022 19:43:08] "GET /about HTTP/1.1" 200 -
+17/08/2022 07:43:08 PM 172.17.0.1 - - [17/Aug/2022 19:43:08] "GET /about HTTP/1.1" 200 -
+17/08/2022 07:43:08 PM 172.17.0.1 - - [17/Aug/2022 19:43:08] "GET /static/css/main.css HTTP/1.1" 304 -
+17/08/2022 07:43:08 PM 172.17.0.1 - - [17/Aug/2022 19:43:08] "GET /static/css/main.css HTTP/1.1" 304 -
