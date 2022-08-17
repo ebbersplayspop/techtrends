@@ -12,6 +12,6 @@ spec:
     helm:
       valueFiles:
       - values-staging.yaml
-    path: techtrends/helm 
+    path: helm 
     repoURL: https://github.com/ebbersplayspop/techtrends 
     targetRevision: HEAD
